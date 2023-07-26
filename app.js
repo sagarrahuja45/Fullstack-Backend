@@ -1,22 +1,18 @@
-var createError = require('http-errors');
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-const bodyParser = require('body-parser');
-var logger = require('morgan');
-const cors = require('cors');
-require('dotenv').config();
+import express from 'express';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import morgan from 'morgan';
+import bodyParser from 'body-parser';
+import path from 'path';
 
 
-const loginRoute = require('./routes/login-route')
-const signupRoute = require('./routes/signup-route')
-const createPostRoute = require('./routes/createPost-route')
+import controllers from './src/controllers/index.js';
 
-
-var app = express();
-app.use(cookieParser());
+const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
+dotenv.config();
+
 
 
 
@@ -25,14 +21,12 @@ app.use(cors());
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-app.use(logger('dev'));
+app.use(morgan('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'public')));
 
- app.use('/login',loginRoute);
- app.use('/signup',signupRoute);
- app.use('/create-post',createPostRoute);
+app.use('/',controllers);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

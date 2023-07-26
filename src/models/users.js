@@ -11,7 +11,6 @@ const usersSchema = new mongoose.Schema({
     lastName: String,
     email: String,
     password: String,
-    userId: Number
 
   });
 
