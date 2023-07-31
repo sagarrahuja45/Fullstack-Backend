@@ -1,4 +1,4 @@
-import loginService from "../../services/login/loginService";
+import loginService from "../../services/login";
 
 const loginController = (req, res) => {
   loginService(req)
@@ -6,7 +6,6 @@ const loginController = (req, res) => {
       return res.status(200).json(loginToken);
     })
     .catch((error) => {
-      console.log(">>>>")
       res.status(404).json(error);
     });
 };

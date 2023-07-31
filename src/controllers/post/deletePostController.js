@@ -1,21 +1,13 @@
-const Post = require('../model/post')
+import postService from '../../services/post'
 
-async function deletePost(req,res){
-    try{
-        const id = req.params.id;
-        console.log(id);
-        const deletePost = await Post.deleteOne({
-            _id : id
+const deletePostController = (req, res) => {
+  postService.deletePostService(req, res)
+    .then((response) => {
+      return res.status(200).json(response);
+    })
+    .catch((error) => {
+      res.status(404).json(error);
+    });
+};
 
-        })
-        res.status(200).json({message : "deleted"})
-        console.log("post deleted")
-    }
-    catch (err){
-        console.log(err)
-    }
-}
-
-module.exports = {
-    deletePost
-}
+export default deletePostController;

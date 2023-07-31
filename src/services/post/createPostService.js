@@ -6,7 +6,6 @@ const secretKey = 'mykey';
 async function createPostService(req, res) {
     try {
       const token = req.headers.token;
-      console.log(token)
       const decodedToken = jwt.verify(token, secretKey);
       const addPost = await Post.create({
         title: req.body.title,
@@ -16,7 +15,6 @@ async function createPostService(req, res) {
       await addPost.save();
       res.status(200);
     } catch (error) {
-      console.log(error);
       res.status(500).json({ error: "An error occurred" });
     }
    

@@ -1,13 +1,12 @@
-import createPostService from "../../services/post/createPostService";
+import postService from '../../services/post'
 
 
 const createPostController = (req, res) => {
-  createPostService(req, res)
+  postService.createPostService(req, res)
     .then((response) => {
       return res.status(200).json(response);
     })
     .catch((error) => {
-      console.log(">>>>")
       res.status(404).json(error);
     });
 };

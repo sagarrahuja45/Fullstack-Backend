@@ -1,13 +1,12 @@
-
-import listPostService from "../../services/post/listPostService";
+import postService from "../../services/post";
 
 const listPostController = (req, res) => {
-    listPostService(req, res)
+  postService
+    .listPostService(req, res)
     .then((response) => {
       return res.status(200).json(response);
     })
     .catch((error) => {
-      console.log(">>>>")
       res.status(404).json(error);
     });
 };

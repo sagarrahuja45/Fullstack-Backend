@@ -2,7 +2,6 @@ import Users from "../../models/users";
 
 
 async function signupService (req, res){
-    console.log(req.body);
     try {
       const user = new Users({
         firstName:req.body.firstName,
