@@ -10,12 +10,13 @@ async function signupService (req, res){
         password: req.body.password,
       });
       await user.save();
+      res.status(200).send("added");
+
     } 
     catch (error) {
       res.status(500).json({ error: "An error occurred" });
     }
   
-    res.status(200).send("added");
   }
 
 export default signupService;

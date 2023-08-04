@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const bcrypt = require("bcrypt");
+import mongoose from "mongoose";
+import bcrypt from 'bcrypt';
 
 mongoose.connect("mongodb://localhost:27017/myProject", {
   useNewUrlParser: true,
@@ -25,4 +25,4 @@ const usersSchema = new mongoose.Schema({
 
   const Users = mongoose.model("user", usersSchema);
 
-  module.exports = Users;
+export default Users;

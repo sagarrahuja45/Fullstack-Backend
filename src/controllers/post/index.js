@@ -14,4 +14,4 @@ router.put('/update',updatePostController);
 
 
 
-module.exports = router;
+export default router;

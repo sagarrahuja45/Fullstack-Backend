@@ -6,7 +6,7 @@ import bodyParser from 'body-parser';
 import path from 'path';
 
 
-import controllers from './src/controllers/index.js';
+import controllers from './src/controllers';
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }));
